@@ -20,17 +20,33 @@ print("\n\n")
 # create our insertion_sort function to sort the list
 def insertion_sort(arr):
     # iterate through every element in the list
+    # start at index 1 because we compare the current element to the previous element
+    # each round of the loop represents a pass-through the list
     for index in range(1, len(arr)):
-        # define the current_element variable
+        # define the temp_value variable
+        # this is the element we are removing from the list
         temp_value = arr[index]
+        # define the position variable one to the left of the temp_value
+        # this is the value we are comparing the temp_value to
         position = index - 1
 
+        # inner loop
+        # while the position is greater than or equal to 0
+        # can't look in a position less than index 0
         while position >= 0:
+            # compare the temp_value to the value at the position
+            # if the position value is greater than the temp_value
             if arr[position] > temp_value:
+                # shift the position value to the right
                 arr[position + 1] = arr[position]
+                # move the position one index to the left to compare the
+                # previous value to the temp_value
                 position = position - 1
+            # if the position value is not greater than the temp_value
             else:
+                # we break out of the inner loop
                 break
+        # and insert the temp_value into the correct position
         arr[position + 1] = temp_value
 
     # return the sorted list
